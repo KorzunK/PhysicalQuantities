@@ -1,0 +1,4 @@
+E:\Программирование\C#\PhysicalQuantities\PhysicalQuantities\bin\Debug\PhysicalQuantities.exe
+E:\Программирование\C#\PhysicalQuantities\PhysicalQuantities\bin\Debug\PhysicalQuantities.pdb
+E:\Программирование\C#\PhysicalQuantities\PhysicalQuantities\obj\x86\Debug\PhysicalQuantities.exe
+E:\Программирование\C#\PhysicalQuantities\PhysicalQuantities\obj\x86\Debug\PhysicalQuantities.pdb
