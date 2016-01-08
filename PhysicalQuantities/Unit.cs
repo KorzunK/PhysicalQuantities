@@ -13,53 +13,65 @@ namespace PhysicalQuantities
         public Unit(double value, string name)
         {
             Value = value;
-            Name = name;
         }
+
+        public Unit() { }
 
         public static Unit operator +(Unit x, Unit y)
         {
-            if (x.Name != y.Name)
-                throw new InvalidOperationException("Error");
-
-            return new Unit(x.Value + y.Value, x.Name);
+            if (x.GetType() == y.GetType())
+            {
+                return new Unit(x.Value + y.Value);
+            }
+            else
+            {
+                throw new InvalidOperationException("Adding Error");
+            }
         }
 
         public static Unit operator -(Unit x, Unit y)
         {
-            if (x.Name != y.Name)
-                throw new InvalidOperationException("Error");
-
-            return new Unit(x.Value - y.Value, x.Name);
+            if (x.GetType() == y.GetType())
+            {
+                return new Unit(x.Value - y.Value);
+            }
+            else
+            {
+                throw new InvalidOperationException("Subtraction Error");
+            }
         }
 
         public static Unit operator *(Unit x, Unit y)
         {
-            if ((x.Name != Quantities.Value.Speed.ToString() || x.Name != Quantities.Value.Time.ToString()) && (y.Name != Quantities.Value.Time.ToString() && y.Name!= Quantities.Value.Speed.ToString()))
-                throw new InvalidOperationException("Error");
+            throw new InvalidOperationException("Multiplication Error");
+        }
 
-            return new Unit(x.Value * y.Value, x.Name);
+
+        public static Unit operator *(Unit x, int number)
+        {
+            return new Unit(x.Value * number);
+        } 
+
+        public static Unit operator *(int number, Unit x)
+        {
+            return new Unit(number * x.Value);
+        }
+
+        public static Unit operator /(Unit x, int number)
+        {
+            return new Unit(x.Value / number);
         }
 
         public static Unit operator /(Unit x, Unit y)
         {
-            string v = null;
-
-            if ((x.Name == Quantities.Value.Length.ToString() && y.Name == Quantities.Value.Speed.ToString()))
-                v = Quantities.Value.Length.ToString();
+            if (x.GetType() == y.GetType())
+            {
+                return new Unit(x.Value / y.Value);
+            }
             else
-                throw new InvalidOperationException("Error");
-
-            if ((x.Name == Quantities.Value.Length.ToString() && y.Name == Quantities.Value.Time.ToString()))
-                v = Quantities.Value.Speed.ToString();
-            else
-                throw new InvalidOperationException("Error");
-
-            return new Unit(x.Value / y.Value, v);
-        }
-
-        public override string ToString()
-        {
-            return (String.Format("{0}{1}", Value, Name));
+            {
+                throw new InvalidOperationException("Division Error");
+            }
         }
     }
 }
