@@ -9,29 +9,27 @@ namespace PhysicalQuantities
     {
         static void Main(string[] args)
         {
-            Unit Speed = new Unit(45, Quantities.Value.Speed.ToString());
-            Unit S = new Unit(45, Quantities.Value.Speed.ToString());
-            Unit Length = new Unit(200, Quantities.Value.Length.ToString());
-            Unit l = new Unit(200, Quantities.Value.Length.ToString());
-            Unit Time = new Unit(63, Quantities.Value.Time.ToString());
-            Unit T = new Unit(63, Quantities.Value.Time.ToString());
+            try
+            {
+                Time T1 = new Time(14);
+                Length S1 = new Length(63);
 
+                Console.WriteLine(S1.Value + "(" + S1.Type + ")");
 
-            Quantities.list.Add("Метр(ов)");
-            Quantities.list.Add("Секунд(ы)");
-            Quantities.list.Add("Mетры(ов) в секунду");
-      
+                var V = S1 / T1;
+                var s = S1 - S1;
 
-            Unit sum = Time + T;
-            Console.WriteLine("Ответ = {0}", sum.ToString());
+                Console.WriteLine(V.Value + "(" + V.Type + ")");
+                Console.WriteLine(s.Value + "(" + s.Type + ")");
 
-            Unit dev  = Speed / S;
-            Console.WriteLine("Ответ = {0}", dev.ToString());
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
 
-            Unit tm = Length / Speed;
-            Console.WriteLine("Ответ = {0}", tm.ToString());
-
-            Console.ReadLine();
+                Console.ReadLine();
+            }
         }
     }
 }
